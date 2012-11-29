@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_si_kcclass_newslettersender_domain_Advertiser" modelAttribute="advertiser" path="/advertisers" versionField="Version" z="J0O8f1+iA+ylrxvocC8vJO6hdt8=">
+        <field:textarea field="username" id="c_si_kcclass_newslettersender_domain_Advertiser_username" required="true" z="u175CuEg5uapfpXuZb23dpj2hZE="/>
+        <field:textarea field="password" id="c_si_kcclass_newslettersender_domain_Advertiser_password" z="MaYbjGBBSE57nrfMApXFU3aqhoY="/>
+        <field:select field="roles" id="c_si_kcclass_newslettersender_domain_Advertiser_roles" itemValue="id" items="${securityroles}" multiple="true" path="/securityroles" z="+QYxgNg6+wvU/7AsnHK3cGYOS2s="/>
+        <field:checkbox field="enabled" id="c_si_kcclass_newslettersender_domain_Advertiser_enabled" z="2Z74YmnvgIxfi1taIukt6dZVem4="/>
+    </form:update>
+</div>

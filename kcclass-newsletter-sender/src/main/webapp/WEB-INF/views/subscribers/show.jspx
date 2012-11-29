@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_si_kcclass_newslettersender_domain_Subscriber" object="${subscriber}" path="/subscribers" z="m/M2wHShj30B3zhhGsBhtITVhZ4=">
+        <field:display field="name" id="s_si_kcclass_newslettersender_domain_Subscriber_name" object="${subscriber}" z="soowwVCRjTwEojTpjsAg4K53GUM="/>
+        <field:display field="surname" id="s_si_kcclass_newslettersender_domain_Subscriber_surname" object="${subscriber}" z="kOIUXdMWkgCAl0Q1XPtcSFBSzA4="/>
+        <field:display field="email" id="s_si_kcclass_newslettersender_domain_Subscriber_email" object="${subscriber}" z="6fZoXh9wdvHS5BuTQaBeJSKdCiU="/>
+        <field:display field="advertiser" id="s_si_kcclass_newslettersender_domain_Subscriber_advertiser" object="${subscriber}" z="rIabG5rv7/IDD8sbne9l3dBatus="/>
+    </page:show>
+</div>

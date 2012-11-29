@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <menu:category id="c_advertiser" z="h0nX0vCQoJ3L5Hl7WZ+Yqrczos4=">
+            <menu:item id="i_advertiser_new" messageCode="global_menu_new" url="/advertisers?form" z="mMO9cpw0/2eXcYxqudJZIwZi18I="/>
+            <menu:item id="i_advertiser_list" messageCode="global_menu_list" url="/advertisers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="lY+o7Z3W0I+4BMLEgsJ0osE6d+w="/>
+        </menu:category>
+        <menu:category id="c_securityrole" z="WfQCnPdt+RMl12BFDXmI0V2Ymjg=">
+            <menu:item id="i_securityrole_new" messageCode="global_menu_new" url="/securityroles?form" z="le9Cg5aXDn85A7qAL8KMJnacrmA="/>
+            <menu:item id="i_securityrole_list" messageCode="global_menu_list" url="/securityroles?page=1&amp;size=${empty param.size ? 10 : param.size}" z="nVVXYAqSG3k7Issl6RG4PwBl6YA="/>
+        </menu:category>
+        <menu:category id="c_subscriber" z="uFBSWL5WctewprXkafAe3gNA4rc=">
+            <menu:item id="i_subscriber_new" messageCode="global_menu_new" url="/subscribers?form" z="KdXwYPJuq+8BzKckdMSMrTcl6OQ="/>
+            <menu:item id="i_subscriber_list" messageCode="global_menu_list" url="/subscribers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="6dS9zumzE70kIxez3zoj49IgfnA="/>
+        </menu:category>
+    </menu:menu>
+</div>

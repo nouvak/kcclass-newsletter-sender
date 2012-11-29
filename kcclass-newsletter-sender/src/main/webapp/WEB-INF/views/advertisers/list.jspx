@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_si_kcclass_newslettersender_domain_Advertiser" items="${advertisers}" z="BkGXQZ9yigwTsg/8fR0ovj4eKro=">
+        <table:table data="${advertisers}" id="l_si_kcclass_newslettersender_domain_Advertiser" path="/advertisers" z="pNCYsJ20MXW1+jq4wfOol+vWzI0=">
+            <table:column id="c_si_kcclass_newslettersender_domain_Advertiser_username" property="username" z="AyAb6OE5OQ+3xFGOp5X0Ldv0RgY="/>
+            <table:column id="c_si_kcclass_newslettersender_domain_Advertiser_password" property="password" z="Amxi5Nhnl02cSUeP9pOYc1a2kJQ="/>
+            <table:column id="c_si_kcclass_newslettersender_domain_Advertiser_roles" property="roles" z="WX185R0+r9bKFZ8aidkBGDxAAmI="/>
+            <table:column id="c_si_kcclass_newslettersender_domain_Advertiser_enabled" property="enabled" z="15JxyzYsjhIy6jYkeD0X0sjiThg="/>
+        </table:table>
+    </page:list>
+</div>

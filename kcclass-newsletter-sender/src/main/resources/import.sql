@@ -1,0 +1,6 @@
+insert into kcclass_newsletter_sender.security_role(id, name, version) values (1, 'administrator', 0)
+insert into kcclass_newsletter_sender.security_role(id, name, version) values (2, 'user', 0)
+insert into kcclass_newsletter_sender.advertiser(id, username, password, enabled, version) values (1, 'marko', MD5('novak'), true, 0)
+insert into kcclass_newsletter_sender.advertiser(id, username, password, enabled, version) values (2, 'janez', MD5('novak'), true, 0)
+insert into kcclass_newsletter_sender.advertiser_roles(advertiser, roles) values (1, 1)
+insert into kcclass_newsletter_sender.advertiser_roles(advertiser, roles) values (2, 2)
