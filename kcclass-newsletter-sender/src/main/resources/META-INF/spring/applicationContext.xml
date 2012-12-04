@@ -70,10 +70,20 @@ xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springf
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
     <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager"/>
-    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
-        <property name="persistenceUnitName" value="persistenceUnit"/>
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
+<!--     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory"> -->
+<!--         <property name="persistenceUnitName" value="persistenceUnit"/> -->
+<!--         <property name="dataSource" ref="dataSource"/> -->
+<!--     </bean> -->
+
+	<bean id="hibernateJpaAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="persistenceUnit" />
+		<property name="jpaVendorAdapter" ref="hibernateJpaAdapter" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
     
     <jpa:repositories base-package="si.kcclass.newslettersender.repositories" />
     

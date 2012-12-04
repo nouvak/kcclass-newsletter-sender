@@ -1,14 +1,14 @@
 package si.kcclass.newslettersender.services;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -47,9 +47,9 @@ public class SubscriberServiceImplTest extends AbstractTransactionalJUnit4Spring
 
 	@Test
 	public void testFindByAdvertiser() {
-		List<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser);
+		Page<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser, 0, 10);
 		assertNotNull(subscribers);
-		assertTrue(subscribers.size() == 1);
+		assertTrue(subscribers.getTotalElements() == 1);
 	}
 
 }

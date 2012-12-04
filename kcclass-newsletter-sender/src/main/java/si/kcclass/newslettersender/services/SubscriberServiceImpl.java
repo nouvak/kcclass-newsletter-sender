@@ -1,8 +1,8 @@
 package si.kcclass.newslettersender.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +18,9 @@ public class SubscriberServiceImpl implements SubscriberService {
 	private SubscriberRepository subscriberRepository;
 
 	@Override
-	public List<Subscriber> findByAdvertiser(Advertiser advertiser) {
-		return subscriberRepository.findByAdvertiser(advertiser);
+	public Page<Subscriber> findByAdvertiser(Advertiser advertiser, int page, int pageSize) {
+		PageRequest pageReq = new PageRequest(page, pageSize);
+		return subscriberRepository.findByAdvertiser(advertiser, pageReq);
 	}
 
 }

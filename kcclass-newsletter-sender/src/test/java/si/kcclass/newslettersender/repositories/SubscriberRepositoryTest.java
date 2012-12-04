@@ -1,14 +1,15 @@
 package si.kcclass.newslettersender.repositories;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -42,9 +43,10 @@ public class SubscriberRepositoryTest extends AbstractTransactionalJUnit4SpringC
 
 	@Test
 	public void testFindByAdvertiser() {
-		List<Subscriber> subscribers = subscriberRepository.findByAdvertiser(advertiser);
+		PageRequest page = new PageRequest(0, 10);
+		Page<Subscriber> subscribers = subscriberRepository.findByAdvertiser(advertiser, page);
 		assertNotNull(subscribers);
-		assertTrue(subscribers.size() == 1);
+		assertTrue(subscribers.getTotalElements() == 1);
 	}
 
 }
