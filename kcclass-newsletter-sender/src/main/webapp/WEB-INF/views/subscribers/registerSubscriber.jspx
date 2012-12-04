@@ -3,9 +3,9 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_si_kcclass_newslettersender_domain_Subscriber" modelAttribute="subscriber" path="/subscribers/register-subscriber" render="${empty dependencies}">
-        <field:input field="name" id="c_si_kcclass_newslettersender_domain_Subscriber_name" required="true" z="9ogwLT01bQ8/+iKki8sjZGenYVk="/>
-        <field:input field="surname" id="c_si_kcclass_newslettersender_domain_Subscriber_surname" required="true" z="LQ+U0vLNdbZbY722gF8gw079sGE="/>
-        <field:input field="email" id="c_si_kcclass_newslettersender_domain_Subscriber_email" required="true" validationMessageCode="field_invalid_email" z="AIPlohDea7e8gK7LvBgOyAlNpM0="/>
-        <input id="advertiser" name="advertiser" type="hidden" value="${advertiserId}"/>
+        <field:input field="name" id="c_si_kcclass_newslettersender_domain_Subscriber_name" required="true"/>
+        <field:input field="surname" id="c_si_kcclass_newslettersender_domain_Subscriber_surname" required="true"/>
+        <field:input field="email" id="c_si_kcclass_newslettersender_domain_Subscriber_email" required="true" validationMessageCode="field_invalid_email"/>
+		<input id="advertiser" name="advertiser" type="hidden" value="${subscriber.advertiser.id}"/>
     </form:create>
 </div>

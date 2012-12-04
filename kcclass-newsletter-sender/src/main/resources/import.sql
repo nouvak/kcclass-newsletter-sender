@@ -4,3 +4,4 @@ insert into kcclass_newsletter_sender.advertiser(id, username, password, enabled
 insert into kcclass_newsletter_sender.advertiser(id, username, password, enabled, version) values (2, 'janez', MD5('novak'), true, 0)
 insert into kcclass_newsletter_sender.advertiser_roles(advertiser, roles) values (1, 1)
 insert into kcclass_newsletter_sender.advertiser_roles(advertiser, roles) values (2, 2)
+insert into kcclass_newsletter_sender.subscriber(id, name, surname, email, advertiser, version) values (1, 'test', 'subscriber', 'test.subscriber@gmail.com', 1, 0)
