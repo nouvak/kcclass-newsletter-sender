@@ -31,7 +31,7 @@ public class SubscriberRepositoryTest extends AbstractTransactionalJUnit4SpringC
 
 	@Before
 	public void setUp() throws Exception {
-		if (countRowsInTable("SUBSCRIBER") == 0) {
+		if (countRowsInTable("subscriber") == 0) {
 			executeSqlScript("classpath:import.sql", false);
 		}
 		advertiser = Advertiser.findAdvertiser(ADVERTISER_ID);

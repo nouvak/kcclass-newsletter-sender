@@ -31,7 +31,7 @@ public class SubscriberServiceImplTest extends AbstractTransactionalJUnit4Spring
 
 	@BeforeTransaction
 	public void setupData() throws Exception {
-		if (countRowsInTable("SUBSCRIBER") == 0) {
+		if (countRowsInTable("subscriber") == 0) {
 			executeSqlScript("classpath:import.sql", false);
 		}
 	}
