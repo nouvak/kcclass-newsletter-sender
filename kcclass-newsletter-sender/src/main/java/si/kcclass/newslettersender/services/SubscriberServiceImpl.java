@@ -19,7 +19,7 @@ public class SubscriberServiceImpl implements SubscriberService {
 
 	@Override
 	public Page<Subscriber> findByAdvertiser(Advertiser advertiser, int page, int pageSize) {
-		PageRequest pageReq = new PageRequest(page, pageSize);
+		PageRequest pageReq = new PageRequest(page - 1, pageSize);
 		return subscriberRepository.findByAdvertiser(advertiser, pageReq);
 	}
 

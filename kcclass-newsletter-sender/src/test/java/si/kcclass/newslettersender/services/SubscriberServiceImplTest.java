@@ -47,7 +47,7 @@ public class SubscriberServiceImplTest extends AbstractTransactionalJUnit4Spring
 
 	@Test
 	public void testFindByAdvertiser() {
-		Page<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser, 0, 10);
+		Page<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser, 1, 10);
 		assertNotNull(subscribers);
 		assertTrue(subscribers.getTotalElements() == 1);
 	}

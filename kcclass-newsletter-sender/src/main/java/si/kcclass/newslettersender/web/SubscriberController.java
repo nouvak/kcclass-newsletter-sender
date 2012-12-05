@@ -3,6 +3,7 @@ package si.kcclass.newslettersender.web;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,15 +54,11 @@ public class SubscriberController {
     		@RequestParam(value = "size", required = false) Integer size, 
     		Model uiModel) {
     	Advertiser advertiser = Advertiser.findAdvertiser(advertiserId);
-        if (page != null || size != null) {
-            int sizeNo = size == null ? 10 : size.intValue();
-            final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-//            uiModel.addAttribute("subscribers", Subscriber.findSubscriberEntries(firstResult, sizeNo));
-//            float nrOfPages = (float) Subscriber.countSubscribers() / sizeNo;
-//            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
-        } else {
-//            uiModel.addAttribute("subscribers", Subscriber.findAllSubscribers());
-        }
+    	int sizeNum = size == null ? 10 : size.intValue();
+    	int pageNum = page == null ? 1 : page.intValue();
+    	Page<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser, pageNum, sizeNum);
+    	uiModel.addAttribute("subscribers", subscribers.getContent());
+    	uiModel.addAttribute("maxPages", subscribers.getTotalPages());
         return "subscribers/list";
     }
 

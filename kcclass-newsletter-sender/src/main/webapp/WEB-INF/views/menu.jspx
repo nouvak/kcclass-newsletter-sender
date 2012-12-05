@@ -7,6 +7,7 @@
             <menu:item id="i_advertiser_new" messageCode="global_menu_new" url="/advertisers?form" z="mMO9cpw0/2eXcYxqudJZIwZi18I="/>
             <menu:item id="i_advertiser_list" messageCode="global_menu_list" url="/advertisers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="lY+o7Z3W0I+4BMLEgsJ0osE6d+w="/>
             <menu:item id="i_advertiser_register_subscriber" messageCode="global_register_subscriber" url="/subscribers/register-subscriber/1"/>
+            <menu:item id="i_advertiser_list_subscribers" messageCode="global_list_subscribers" url="/subscribers/list/1?page=1&amp;size=${empty param.size ? 10 : param.size}" />
         </menu:category>
         <menu:category id="c_securityrole" z="WfQCnPdt+RMl12BFDXmI0V2Ymjg=">
             <menu:item id="i_securityrole_new" messageCode="global_menu_new" url="/securityroles?form" z="le9Cg5aXDn85A7qAL8KMJnacrmA="/>
