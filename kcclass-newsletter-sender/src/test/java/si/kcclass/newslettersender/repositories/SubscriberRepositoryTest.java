@@ -3,6 +3,8 @@ package si.kcclass.newslettersender.repositories;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,11 +44,18 @@ public class SubscriberRepositoryTest extends AbstractTransactionalJUnit4SpringC
 	}
 
 	@Test
-	public void testFindByAdvertiser() {
+	public void testFindByAdvertiserPaged() {
 		PageRequest page = new PageRequest(0, 10);
 		Page<Subscriber> subscribers = subscriberRepository.findByAdvertiser(advertiser, page);
 		assertNotNull(subscribers);
 		assertTrue(subscribers.getTotalElements() == 1);
+	}
+
+	@Test
+	public void testFindByAdvertiserAll() {
+		List<Subscriber> subscribers = subscriberRepository.findByAdvertiser(advertiser);
+		assertNotNull(subscribers);
+		assertTrue(subscribers.size() == 1);
 	}
 
 }

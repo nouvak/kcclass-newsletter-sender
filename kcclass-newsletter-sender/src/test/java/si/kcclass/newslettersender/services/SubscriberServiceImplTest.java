@@ -3,6 +3,8 @@ package si.kcclass.newslettersender.services;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,10 +48,17 @@ public class SubscriberServiceImplTest extends AbstractTransactionalJUnit4Spring
 	}
 
 	@Test
-	public void testFindByAdvertiser() {
+	public void testFindByAdvertiserPaged() {
 		Page<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser, 1, 10);
 		assertNotNull(subscribers);
 		assertTrue(subscribers.getTotalElements() == 1);
+	}
+	
+	@Test
+	public void testFindByAdvertiserAll() {
+		List<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser);
+		assertNotNull(subscribers);
+		assertTrue(subscribers.size() == 1);
 	}
 
 }

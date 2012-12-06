@@ -87,4 +87,19 @@ xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springf
     
     <jpa:repositories base-package="si.kcclass.newslettersender.repositories" />
     
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">		
+   		<property name="host"><value>smtp.gmail.com</value></property>
+        <property name="port"><value>587</value></property>
+        <property name="protocol"><value>smtp</value></property>
+        <property name="username"><value>nouvak.kcclass@gmail.com</value></property>
+        <property name="password"><value>KCClassTest</value></property>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.quitwait">false</prop>
+            </props>
+        </property>
+	</bean>
+    
 </beans>

@@ -5,6 +5,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/subscribers/list.jspx" />
 	</definition>
+	<definition extends="default" name="subscribers/listForAdvertiser">
+		<put-attribute name="body"
+			value="/WEB-INF/views/subscribers/listForAdvertiser.jspx" />
+	</definition>
 	<definition extends="default" name="subscribers/show">
 		<put-attribute name="body"
 			value="/WEB-INF/views/subscribers/show.jspx" />

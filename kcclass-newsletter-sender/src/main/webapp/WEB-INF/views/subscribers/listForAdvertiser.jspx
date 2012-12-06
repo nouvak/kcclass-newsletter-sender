@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_si_kcclass_newslettersender_domain_Subscriber" items="${subscribers}" z="ySSwkCl+JR6SHjN6Iysma+8IwO0=">
+        <table:table data="${subscribers}" id="l_si_kcclass_newslettersender_domain_Subscriber" path="/subscribers" z="i08Lz0iDevGCiWyNghYGpDSbNoc=">
+            <table:column id="c_si_kcclass_newslettersender_domain_Subscriber_name" property="name" z="d+lHWkI2Jrf9eFSNRNpLK73FiFI="/>
+            <table:column id="c_si_kcclass_newslettersender_domain_Subscriber_surname" property="surname" z="VNF1/z8gMhNXHqFgDUzS3XJyU8U="/>
+            <table:column id="c_si_kcclass_newslettersender_domain_Subscriber_email" property="email" z="j996VvI+dl3lc5y4aKfVNFLXM68="/>
+            <table:column id="c_si_kcclass_newslettersender_domain_Subscriber_advertiser" property="advertiser" z="jyFSLUA0N6fGfvWo3a8k3Hqm/wA="/>
+        </table:table>
+    </page:list>
+    <div style="margin: 10px;">
+    	<spring:url value="/subscribers/send-newsletter/1" var="urlSendNewsletter"></spring:url>
+    	<a href="${urlSendNewsletter}">Send newsletter</a>
+    </div> 
+</div>

@@ -1,9 +1,15 @@
 package si.kcclass.newslettersender.web;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.mail.MailException;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,8 +28,13 @@ import si.kcclass.newslettersender.services.SubscriberService;
 @RooWebScaffold(path = "subscribers", formBackingObject = Subscriber.class)
 public class SubscriberController {
 	
+	protected static Logger logger = Logger.getLogger(SubscriberController.class);
+	
 	@Autowired
 	private SubscriberService subscriberService;
+	
+	@Autowired
+	private MailSender mailSender;
 	
     @RequestMapping(value = "register-subscriber/{advertiser_id}", method=RequestMethod.GET, produces = "text/html")
     public String registerSubscriberForm(
@@ -59,7 +70,29 @@ public class SubscriberController {
     	Page<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser, pageNum, sizeNum);
     	uiModel.addAttribute("subscribers", subscribers.getContent());
     	uiModel.addAttribute("maxPages", subscribers.getTotalPages());
-        return "subscribers/list";
+        return "subscribers/listForAdvertiser";
+    }
+
+    @RequestMapping(value="send-newsletter/{advertiser_id}")
+    public String sendNewsletter(
+    		@PathVariable("advertiser_id") Long advertiserId,
+    		Model uiModel) {
+    	Advertiser advertiser = Advertiser.findAdvertiser(advertiserId);
+    	List<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser);
+    	SimpleMailMessage message = new SimpleMailMessage();
+    	message.setTo("marko.novak@xlab.si");
+    	for (Subscriber subscriber: subscribers) {
+    		message.setTo(subscriber.getEmail());
+    		message.setText(String.format("Dear %s %s, this is a test message!", 
+    				subscriber.getSurname(), subscriber.getName()));
+    		try{
+                mailSender.send(message);
+            }
+            catch(MailException ex) {
+            	logger.error("Mail sending failed for recipient: " + subscriber.getEmail(), ex);
+            }
+    	}
+    	return "redirect:/subscribers";
     }
 
 }
