@@ -7,5 +7,6 @@
         <field:textarea field="password" id="c_si_kcclass_newslettersender_domain_Advertiser_password" z="MaYbjGBBSE57nrfMApXFU3aqhoY="/>
         <field:select field="roles" id="c_si_kcclass_newslettersender_domain_Advertiser_roles" itemValue="id" items="${securityroles}" multiple="true" path="/securityroles" z="+QYxgNg6+wvU/7AsnHK3cGYOS2s="/>
         <field:checkbox field="enabled" id="c_si_kcclass_newslettersender_domain_Advertiser_enabled" z="2Z74YmnvgIxfi1taIukt6dZVem4="/>
+        <field:input field="email" id="c_si_kcclass_newslettersender_domain_Advertiser_email" required="true" validationMessageCode="field_invalid_email" z="ZBqaIhrFZ8LGpvvzxIiLRwpr+Bo="/>
     </form:update>
 </div>

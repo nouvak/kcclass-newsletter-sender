@@ -18,7 +18,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Advertiser, String> ApplicationConversionServiceFactoryBean.getAdvertiserToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<si.kcclass.newslettersender.domain.Advertiser, java.lang.String>() {
             public String convert(Advertiser advertiser) {
-                return new StringBuilder().append(advertiser.getUsername()).append(' ').append(advertiser.getPassword()).toString();
+                return new StringBuilder().append(advertiser.getUsername()).append(' ').append(advertiser.getPassword()).append(' ').append(advertiser.getEmail()).toString();
             }
         };
     }

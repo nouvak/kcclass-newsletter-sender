@@ -24,6 +24,9 @@ public class Advertiser {
     
     @NotNull
     private Boolean enabled;
+    
+    @NotNull
+    private String email;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<SecurityRole> roles = new HashSet<SecurityRole>();

@@ -24,10 +24,16 @@ privileged aspect AdvertiserDataOnDemand_Roo_DataOnDemand {
     
     public Advertiser AdvertiserDataOnDemand.getNewTransientAdvertiser(int index) {
         Advertiser obj = new Advertiser();
+        setEmail(obj, index);
         setEnabled(obj, index);
         setPassword(obj, index);
         setUsername(obj, index);
         return obj;
+    }
+    
+    public void AdvertiserDataOnDemand.setEmail(Advertiser obj, int index) {
+        String email = "foo" + index + "@bar.com";
+        obj.setEmail(email);
     }
     
     public void AdvertiserDataOnDemand.setEnabled(Advertiser obj, int index) {

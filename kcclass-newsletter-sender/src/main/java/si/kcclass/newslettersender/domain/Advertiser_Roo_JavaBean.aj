@@ -33,6 +33,14 @@ privileged aspect Advertiser_Roo_JavaBean {
         this.enabled = enabled;
     }
     
+    public String Advertiser.getEmail() {
+        return this.email;
+    }
+    
+    public void Advertiser.setEmail(String email) {
+        this.email = email;
+    }
+    
     public Set<SecurityRole> Advertiser.getRoles() {
         return this.roles;
     }

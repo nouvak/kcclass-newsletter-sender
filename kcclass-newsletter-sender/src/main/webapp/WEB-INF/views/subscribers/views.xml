@@ -17,6 +17,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/subscribers/create.jspx" />
 	</definition>
+	<definition extends="default" name="subscribers/createMessage">
+		<put-attribute name="body"
+			value="/WEB-INF/views/subscribers/createMessage.jspx" />
+	</definition>
 	<definition extends="default" name="subscribers/update">
 		<put-attribute name="body"
 			value="/WEB-INF/views/subscribers/update.jspx" />

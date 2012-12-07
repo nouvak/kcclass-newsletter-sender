@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import si.kcclass.newslettersender.domain.Advertiser;
+import si.kcclass.newslettersender.domain.Newsletter;
 import si.kcclass.newslettersender.domain.Subscriber;
 import si.kcclass.newslettersender.services.SubscriberService;
 
@@ -73,18 +74,29 @@ public class SubscriberController {
         return "subscribers/listForAdvertiser";
     }
 
-    @RequestMapping(value="send-newsletter/{advertiser_id}")
-    public String sendNewsletter(
+    @RequestMapping(value="send-newsletter/{advertiser_id}", produces = "text/html")
+    public String sendNewsletterForm(
     		@PathVariable("advertiser_id") Long advertiserId,
+    		Model uiModel) {
+    	uiModel.addAttribute("advertiserId", advertiserId);
+    	uiModel.addAttribute("newsletterMessage", new Newsletter());
+    	return "subscribers/createMessage";
+    }
+    
+    @RequestMapping(value="send-newsletter")
+    public String sendNewsletter(
+    		Long advertiserId,
+    		Newsletter newsletter,
     		Model uiModel) {
     	Advertiser advertiser = Advertiser.findAdvertiser(advertiserId);
     	List<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser);
     	SimpleMailMessage message = new SimpleMailMessage();
-    	message.setTo("marko.novak@xlab.si");
+    	message.setFrom(advertiser.getEmail());
+    	message.setSubject(newsletter.getTitle());
     	for (Subscriber subscriber: subscribers) {
     		message.setTo(subscriber.getEmail());
-    		message.setText(String.format("Dear %s %s, this is a test message!", 
-    				subscriber.getSurname(), subscriber.getName()));
+    		message.setText(String.format("Dear %s %s, this is a test message:\n%s", 
+    				subscriber.getSurname(), subscriber.getName(), newsletter.getContent()));
     		try{
                 mailSender.send(message);
             }
@@ -94,5 +106,4 @@ public class SubscriberController {
     	}
     	return "redirect:/subscribers";
     }
-
 }

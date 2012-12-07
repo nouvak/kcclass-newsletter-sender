@@ -7,5 +7,6 @@
         <field:display field="password" id="s_si_kcclass_newslettersender_domain_Advertiser_password" object="${advertiser}" z="3BnrNSya5lOzE4OMcKv0IH5d4Z0="/>
         <field:display field="roles" id="s_si_kcclass_newslettersender_domain_Advertiser_roles" object="${advertiser}" z="ArTRm0A0zqiuO2daohwPlrQvcJQ="/>
         <field:display field="enabled" id="s_si_kcclass_newslettersender_domain_Advertiser_enabled" object="${advertiser}" z="dn1uncTNk5nfa0YpwWgicrO9zNE="/>
+        <field:display field="email" id="s_si_kcclass_newslettersender_domain_Advertiser_email" object="${advertiser}" z="oVLyNkLeFn8F+SwlTL7Jp0CprlM="/>
     </page:show>
 </div>
