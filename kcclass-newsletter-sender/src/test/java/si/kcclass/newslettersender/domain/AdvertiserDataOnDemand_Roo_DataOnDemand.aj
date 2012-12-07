@@ -52,7 +52,7 @@ privileged aspect AdvertiserDataOnDemand_Roo_DataOnDemand {
     public void AdvertiserDataOnDemand.setUsername(Advertiser obj, int index) {
         String username = "username_" + index;
         if (username.length() > 50) {
-            username = username.substring(0, 50);
+            username = new Random().nextInt(10) + username.substring(1, 50);
         }
         obj.setUsername(username);
     }

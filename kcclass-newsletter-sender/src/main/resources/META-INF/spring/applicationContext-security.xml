@@ -13,6 +13,7 @@
         <intercept-url pattern="/member/**" access="isAuthenticated()" />
         <intercept-url pattern="/advertisers/**" access="isAuthenticated()" />
         <intercept-url pattern="/securityroles/**" access="isAuthenticated()" />
+        <intercept-url pattern="/subscribers/**" access="isAuthenticated()" />
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/**" access="permitAll" />
     </http>

@@ -1,5 +1,6 @@
 package si.kcclass.newslettersender.web;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import si.kcclass.newslettersender.domain.Advertiser;
 import si.kcclass.newslettersender.domain.Newsletter;
 import si.kcclass.newslettersender.domain.Subscriber;
+import si.kcclass.newslettersender.services.AdvertiserService;
 import si.kcclass.newslettersender.services.SubscriberService;
 
 @RequestMapping("/subscribers")
@@ -35,11 +37,12 @@ public class SubscriberController {
 	private SubscriberService subscriberService;
 	
 	@Autowired
+	private AdvertiserService advertiserService;
+	
+	@Autowired
 	private MailSender mailSender;
 	
-    @RequestMapping(value = "register-subscriber/{advertiser_id}", method=RequestMethod.GET, produces = "text/html")
-    public String registerSubscriberForm(
-    		@PathVariable("advertiser_id") Long advertiserId, Model uiModel) {
+    private String registerSubscriberForm(Long advertiserId, Model uiModel) {
     	Advertiser advertiser = Advertiser.findAdvertiser(advertiserId);
     	Subscriber subscriber = new Subscriber();
     	subscriber.setAdvertiser(advertiser);
@@ -47,7 +50,20 @@ public class SubscriberController {
     	uiModel.addAttribute("advertiserId", advertiserId);
         return "subscribers/registerSubscriber";
     }
-
+    
+    @RequestMapping(value = "register-subscriber/{advertiser_id}", method=RequestMethod.GET, produces = "text/html")
+    public String registerSubscriberFormWithId(
+    		@PathVariable("advertiser_id") Long advertiserId, 
+    		Model uiModel) {
+    	return registerSubscriberForm(advertiserId, uiModel);
+    }
+    
+    @RequestMapping(value = "register-subscriber", method=RequestMethod.GET, produces = "text/html")
+    public String registerSubscriberFormWithoutId(Model uiModel, Principal principal) {
+    	Advertiser advertiser = advertiserService.findByUsername(principal.getName());
+    	return registerSubscriberForm(advertiser.getId(), uiModel);
+    }
+    
     @RequestMapping(value = "register-subscriber", method = RequestMethod.POST, produces = "text/html")
 	public String registerSubscriber(@Valid Subscriber subscriber, BindingResult bindingResult, Model uiModel) {
         if (bindingResult.hasErrors()) {
@@ -59,13 +75,13 @@ public class SubscriberController {
     	return "redirect:/subscribers";
 	}
     
-    @RequestMapping(value="list/{advertiser_id}", produces = "text/html")
-    public String listForAdvertiser(
-    		@PathVariable("advertiser_id") Long advertiserId,  
+    @RequestMapping(value="list", produces = "text/html")
+    public String listForAdvertiser(  
     		@RequestParam(value = "page", required = false) Integer page, 
     		@RequestParam(value = "size", required = false) Integer size, 
-    		Model uiModel) {
-    	Advertiser advertiser = Advertiser.findAdvertiser(advertiserId);
+    		Model uiModel,
+    		Principal principal) {
+    	Advertiser advertiser = advertiserService.findByUsername(principal.getName());
     	int sizeNum = size == null ? 10 : size.intValue();
     	int pageNum = page == null ? 1 : page.intValue();
     	Page<Subscriber> subscribers = subscriberService.findByAdvertiser(advertiser, pageNum, sizeNum);

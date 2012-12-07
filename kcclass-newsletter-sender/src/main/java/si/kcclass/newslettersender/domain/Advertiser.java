@@ -3,6 +3,7 @@ package si.kcclass.newslettersender.domain;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -17,6 +18,7 @@ public class Advertiser {
 
     @NotNull
     @Size(min = 3, max = 50)
+    @Column(unique=true)
     private String username;
 
     @Size(max = 100)
